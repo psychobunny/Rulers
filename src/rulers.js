@@ -84,7 +84,7 @@ var Ruler;
 				i;
 
 			for (i = 0; i < TICKS_PER_MAJOR_INTERVAL; i += 1) {
-				html += "<div xmlns='http://www.w3.org/1999/xhtml' style='position: absolute; bottom: 0px; width: " + tickWidth + "px; border-bottom: 1px solid black; border-left: 1px solid black; height: " + ((i % 5 === 0) ? majorHeight : minorHeight)  + "px; left: "  + i * tickWidth + "px'></div>";
+				html += "<div xmlns='http://www.w3.org/1999/xhtml' style='position: absolute; bottom: 0px; width: " + tickWidth + "px; border-bottom: 1px solid #555; border-left: 1px solid #999;  height: " + ((i % 5 === 0) ? majorHeight : minorHeight)  + "px; left: "  + i * tickWidth + "px'></div>";
 			}
 
 			// https://developer.mozilla.org/en-US/docs/HTML/Canvas/Drawing_DOM_objects_into_a_canvas
@@ -96,8 +96,9 @@ var Ruler;
 
 			options = options || {};
 
-			this.ctx.fillStyle = options.backgroundColor || "#f5f5f5";
-			this.cursor_ctx.strokeStyle = options.cursorColor || '#333';
+			this.ctx.fillStyle = options.backgroundColor || "#474747";
+			this.ctx.strokeStyle = "#ffffff";
+			this.cursor_ctx.strokeStyle = options.cursorColor || '#ffffff';
 
 			this.ctx.fillRect(0, 0, this.canvas.width, GUTTER_SIZE);
 			this.ctx.fillRect(0, 0, GUTTER_SIZE, this.canvas.height);
@@ -120,6 +121,8 @@ var Ruler;
 			url = DOMURL.createObjectURL(svg);
 			ruler.src = url;
 		};
+
+		//window.onresize = this.render;
 	};
 
 }());
